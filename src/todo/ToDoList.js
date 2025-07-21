@@ -1,5 +1,5 @@
 // TodoList.js
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import useApi from '../api/useApi';
 import { Card, Button } from 'react-bootstrap';
 
@@ -7,10 +7,10 @@ export default function TodoList({ onEdit }) {
   const api = useApi();
   const [todos, setTodos] = useState([]);
 
-  const fetchTodos = async () => {
+  const fetchTodos = useCallback(async () => {
     const res = await api.get('');
     setTodos(res.data);
-  };
+  }, [api]);
 
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this todo?');
