@@ -21,7 +21,7 @@ export default function TodoList({ onEdit }) {
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [fetchTodos]);
 
   return (
     <Card className="p-3 mb-4">
