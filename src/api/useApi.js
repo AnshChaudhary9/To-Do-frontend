@@ -7,7 +7,7 @@ export default function useApi() {
 
   const instance = useMemo(() => {
     return axios.create({
-      baseURL: 'https://to-do-list-app-production-a9dd.up.railway.app',
+      baseURL: 'https://to-do-list-app-production-a9dd.up.railway.app/todo',
       headers: token ? { Authorization: `Bearer ${token}` } : {}
     });
   }, [token]);
