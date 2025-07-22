@@ -22,7 +22,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/public/login', loginData, {
+      const response = await axios.post('https://to-do-list-app-production-a9dd.up.railway.app/public/login', loginData, {
         headers: { 'Content-Type': 'application/json' }
       });
       setToken(response.data);

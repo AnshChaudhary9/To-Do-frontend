@@ -97,7 +97,7 @@ function PostUser() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/public', user,{
+      const response = await axios.post('https://to-do-list-app-production-a9dd.up.railway.app/public', user,{
         headers: {
         'Content-Type': 'application/json'
       }});
