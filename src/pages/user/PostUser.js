@@ -79,13 +79,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Form, Button, Card } from 'react-bootstrap';
+import { useAuth } from '../../context/authcontext/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function PostUser() {
   const [user, setUser] = useState({
     userName: '',
     password: ''
   });
-
+  const { setToken } = useAuth();
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prevUser) => ({
@@ -98,13 +101,15 @@ function PostUser() {
     e.preventDefault();
     try {
       const response = await axios.post('https://to-do-list-app-production-a9dd.up.railway.app/public', user,{
-        headers: {
-        'Content-Type': 'application/json'
-      }});
-      
+            // const response = await axios.post('http://localhost:8080/public', user,{
+        headers: {'Content-Type': 'application/json'}
+      });
       console.log('User created:', response.data);
       alert('User Created Successfully!');
       setUser({ userName: '', email: '', password: '' });
+      const token = response.data;
+      setToken(token);
+      navigate('/');
     } catch (error) {
       console.error('Error creating user:', error);
       alert('Failed to create user.');
