@@ -1,81 +1,3 @@
-// import { useState } from "react";
-// import "./PostUser.css"
-// import { Form, useNavigate } from "react-router-dom";
-// import { Button } from "react-bootstrap";
-
-// const PostUser = () =>{
-//     const [formData, setFormData] = useState({
-//         name : "",
-//         password : ""
-//     })
-
-//     const handleInputChange = (event) =>{
-//         const{name,value} = event.target;
-//         setFormData({
-//             ...formData,
-//             [name]:value,
-//         })
-//     }
-
-//     const navigate = useNavigate();
-
-//     const handleSubmit = async (e) =>{
-//         e.peventDefault();
-//         console.log(formData);
-
-//         try {
-//             const response = await fetch("http://loacalhost:8080/public",{
-//                 method : "POST",
-//                 headers: {"Content-Type":"application/json"},
-//                 body: JSON.stringify(formData)
-//             });
-
-//             const data = await response.json();
-//             console.log("Employee created: ", data);
-//             navigate("/")
-//         } catch (error) {
-//             console.log("Error creating employee", error.message)
-//         }
-//     }
-
-
-//     return(
-//         <>
-//         <div className="center-form">
-//             <h1>Post New User</h1>
-//             <Form onSubmit={handleSubmit}>
-//                 <Form.Group controlId="formBasicName">
-//                     <Form.Control 
-//                         type="text"
-//                         name="name"
-//                         placeholder="Enter the name"
-//                         value={formData.name}
-//                         onChange={handleInputChange}                      
-//                         />
-//                 </Form.Group>
-
-//                 <Form.Group control="formBasicName">
-//                     <Form.Control 
-//                         type="text"
-//                         name="password"
-//                         placeholder="Enter the password"
-//                         value={formData.password}
-//                         onChange={handleInputChange}                      
-//                         />
-//                 </Form.Group>
-
-//                 <Button variant="primary" type="submit" className="w-100">
-//                     Post User
-//                 </Button>
-//             </Form>
-//         </div>
-//         </>
-//     )
-// }
-
-// export default PostUser;
-
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Form, Button, Card } from 'react-bootstrap';
@@ -87,7 +9,7 @@ function PostUser() {
     userName: '',
     password: ''
   });
-  const { setToken } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -101,14 +23,14 @@ function PostUser() {
     e.preventDefault();
     try {
       const response = await axios.post('https://to-do-list-app-production-a9dd.up.railway.app/public', user,{
-            // const response = await axios.post('http://localhost:8080/public', user,{
+        // const response = await axios.post('http://localhost:8080/public', user,{
         headers: {'Content-Type': 'application/json'}
       });
       console.log('User created:', response.data);
       alert('User Created Successfully!');
       setUser({ userName: '', email: '', password: '' });
       const token = response.data;
-      setToken(token);
+      login(token);
       navigate('/');
     } catch (error) {
       console.error('Error creating user:', error);

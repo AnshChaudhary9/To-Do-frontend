@@ -1,16 +1,35 @@
-.navbar{
-        background-color: black;
-    }
-    .navbar .navbar-brand{
-        color: ivory;
-    }
-    .navbar .nav-link{
-        color: ivory !important;
-        text-decoration: none !important;
-        margin-right: 20px;
-    }
-    @media (max-width:576px){
-        .navbar .nav-link{
-            margin-right: 0;
-        }
-    }
+
+
+.navbar-custom {
+  background-color: black; /* Bootstrap Primary color (you can customize this) */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-custom .navbar-brand {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  gap: 15px;
+}
+
+.navbar-custom .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  margin-right: 15px;
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #cce5ff !important;
+}
+
+.navbar-toggler {
+  border-color: #ffffff;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' ... %3E%3C/svg%3E");
+}

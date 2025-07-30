@@ -10,7 +10,7 @@ function Login() {
     password: ''
   });
 
-  const { setToken } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,7 +26,7 @@ function Login() {
         // const response = await axios.post('http://localhost:8080/public/login', loginData, {
         headers: { 'Content-Type': 'application/json' }
       });
-      setToken(response.data);
+      login(response.data);
       navigate('/');
       alert("Login successful!");
     } catch (err) {
