@@ -39,7 +39,7 @@ export default function Dashboard() {
               }}
             />
           )}
-          <TodoList key={refresh} onEdit={setEditingTodo} />
+          <TodoList refresh={refresh} onEdit={setEditingTodo} />
         </>
       )}
     </Container>
